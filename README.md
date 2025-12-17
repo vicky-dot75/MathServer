@@ -32,12 +32,114 @@ Publish the website in the given URL.
 
 ## PROGRAM:
 
+<html>
+<head>
+    <title>mileage</title>
+    <style>
+        body {
+            background-color: #5ad5fa;
+            
+            font-family: Georgia, serif;
+
+            font-size: 30px
+}
+        
+        .box {
+            width: 700px;
+            margin: auto;
+            margin-top: 120px;
+            padding: 100px;
+            background-color: #cbff3d;
+            color: rgb(0, 0, 0);
+            border: 4px dashed rgb(255, 0, 0);
+            text-align: center;
+            font-size: 18px
+            
+            
+        }
+        input {
+            padding: 5px;
+            margin: 8px;
+            font-size: 20px
+        }
+        .btn {
+            padding: 6px 15px;
+            cursor: pointer;
+            font-size: 15px
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h1>fuel consumption rate Calculator</h1>
+        <h2> VIGNESH-S (25014344)<h2>
+        
+
+        <form method="POST">
+            {% csrf_token %}
+            Distance (km):
+            <input type="text" name="distance" value="{{ km }}"><br>
+
+            Fuel Used (liters):
+            <input type="text" name="fuel" value="{{ lt }}"><br>
+
+            <button class="btn" type="submit">Calculate</button><br><br>
+
+            Mileage:
+            <input type="text" value="{{ mileage }}" readonly> km/l
+            
+        </form>
+    </div>
+</body>
+</html>
+
+views.py
+
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('mileage/', views.mileage, name='mileage'),
+]
+
+from django.shortcuts import render
+
+def mileage(request):
+    mileage = 0
+    km = 0
+    lt = 0
+
+    if request.method == "POST":
+        km = float(request.POST.get('distance', 0))
+        lt = float(request.POST.get('fuel', 0))
+        if lt > 0:
+            mileage = km / lt
+
+    return render(request, 'mathapp/mileage.html', {
+        'km': km,
+        'lt': lt,
+        'mileage': round(mileage, 2)
+    })
+
+from django.contrib import admin
+from django.urls import path, include
+
+url,py
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('mathapp.urls')),  # only include app, nothing else
+]
 
 ## OUTPUT - SERVER SIDE:
+
+<img width="1920" height="1080" alt="Screenshot (21)" src="https://github.com/user-attachments/assets/73e23d90-39a8-4880-9ad3-1b5eee867e2f" />
 
 
 ## OUTPUT - WEBPAGE:
 
+<img width="1920" height="1080" alt="Screenshot (19)" src="https://github.com/user-attachments/assets/16e477ed-a541-4904-aa1e-a555a1361cff" />
 
 ## RESULT:
 The a web page to calculate vehicle mileage and fuel efficiency using server-side scripts is created successfully.
