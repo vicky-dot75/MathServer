@@ -1,5 +1,5 @@
 # Ex.04 Design a Website for Server Side Processing
-## Date:
+## Date:10-12-2025
 
 ## AIM:
 To create a web page to calculate vehicle mileage and fuel efficiency using server-side scripts.
@@ -133,13 +133,12 @@ urlpatterns = [
 ]
 
 ## OUTPUT - SERVER SIDE:
-
-<img width="1920" height="1080" alt="Screenshot (21)" src="https://github.com/user-attachments/assets/73e23d90-39a8-4880-9ad3-1b5eee867e2f" />
+![alt text](<Screenshot (21).png>)
 
 
 ## OUTPUT - WEBPAGE:
 
-<img width="1920" height="1080" alt="Screenshot (19)" src="https://github.com/user-attachments/assets/16e477ed-a541-4904-aa1e-a555a1361cff" />
+![alt text](<Screenshot (19).png>)
 
 ## RESULT:
 The a web page to calculate vehicle mileage and fuel efficiency using server-side scripts is created successfully.
